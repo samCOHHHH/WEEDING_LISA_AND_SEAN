@@ -159,12 +159,46 @@
 
         #top-timer {
             text-align: center;
+            margin-bottom: 40px;
+            padding: 10px 0;
+        }
+
+        #top-timer .timer-row {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 6px;
+        }
+
+        #top-timer .t-unit b {
+            display: block;
             font-family: Montserrat, sans-serif;
-            font-size: 0.7rem;
+            font-size: clamp(2rem, 6vw, 2.8rem);
+            font-weight: 200;
+            color: var(--gold);
+            line-height: 1;
+            letter-spacing: 2px;
+        }
+
+        #top-timer .t-unit span {
+            display: block;
+            font-family: Montserrat, sans-serif;
+            font-size: 0.5rem;
+            text-transform: uppercase;
             letter-spacing: 3px;
             color: var(--ivory);
-            opacity: 0.75;
-            margin-bottom: 30px;
+            opacity: 0.7;
+            margin-top: 4px;
+        }
+
+        #top-timer .timer-label {
+            font-family: Montserrat, sans-serif;
+            font-size: 0.6rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--ivory);
+            opacity: 0.5;
+            margin-top: 8px;
         }
 
         .card {
@@ -617,7 +651,15 @@
     </div>
 
     <main id="main">
-        <div id="top-timer" class="reveal-item" style="--reveal-delay:0s;"></div>
+        <div id="top-timer" class="reveal-item" style="--reveal-delay:0s;">
+            <div class="timer-row">
+                <div class="t-unit"><b id="ttD">--</b><span>Jours</span></div>
+                <div class="t-unit"><b id="ttH">--</b><span>Heures</span></div>
+                <div class="t-unit"><b id="ttM">--</b><span>Min</span></div>
+                <div class="t-unit"><b id="ttS">--</b><span>Sec</span></div>
+            </div>
+            <div class="timer-label">avant le grand jour</div>
+        </div>
 
         <section class="card mairie-section reveal-item" style="--reveal-delay: 0s;">
             <div class="mairie-bg"></div>
@@ -822,12 +864,15 @@
             const m = Math.floor((diff / (1000 * 60)) % 60);
             const s = Math.floor((diff / 1000) % 60);
 
-            setText('tD', String(d).padStart(2, '0'));
-            setText('tH', String(h).padStart(2, '0'));
-            setText('tM', String(m).padStart(2, '0'));
-            setText('tS', String(s).padStart(2, '0'));
-            setText('navTimer', `${d}J ${h}H ${m}M ${s}S`);
-            setText('top-timer', `${d}J ${h}H ${m}M ${s}S`);
+            const pad = n => String(n).padStart(2, '0');
+            setText('tD', pad(d));
+            setText('tH', pad(h));
+            setText('tM', pad(m));
+            setText('tS', pad(s));
+            setText('ttD', pad(d));
+            setText('ttH', pad(h));
+            setText('ttM', pad(m));
+            setText('ttS', pad(s));
         }
 
         function setText(id, value) {
