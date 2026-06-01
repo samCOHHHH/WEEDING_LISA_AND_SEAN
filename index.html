@@ -767,13 +767,15 @@
             document.getElementById('cover-overlay').classList.add('opened');
             document.getElementById('body-tag').classList.add('is-open');
 
-            // Afficher immédiatement la section Mairie (évite le flash fond Tel Aviv)
-            const mairieSec = document.querySelector('.mairie-section');
-            if (mairieSec) {
-                mairieSec.style.transition = 'none';
-                mairieSec.style.opacity = '1';
-                mairieSec.style.transform = 'none';
-            }
+            // Afficher immédiatement la Mairie + le timer (évite le flash fond Tel Aviv)
+            ['.mairie-section', '#top-timer'].forEach(sel => {
+                const el = document.querySelector(sel);
+                if (el) {
+                    el.style.transition = 'none';
+                    el.style.opacity = '1';
+                    el.style.transform = 'none';
+                }
+            });
             updateMairieFade();
 
             if (musicBtn) {
