@@ -11,8 +11,8 @@
     <style>
         :root {
             --gold: #C9A84C;
-            --ivory: #EDD9B0;
-            --line: rgba(237,217,176,0.35);
+            --ivory: #F8F2E4;
+            --line: rgba(248,242,228,0.4);
         }
 
         * { box-sizing: border-box; }
@@ -179,11 +179,17 @@
             position: relative;
         }
 
-        /* Texte lisible sur fond : ombre légère sur tous les éléments */
+        /* Texte lisible sur fond : ombre sur tous les éléments */
         .card p, .card .hebrew-note, .card .date-row, .card .names,
-        .card .hebrew, .card .parents-text, .card .parents-side {
-            text-shadow: 0 1px 8px rgba(0,0,0,0.55);
+        .card .hebrew, .card .parents-text, .card .parents-side,
+        .card .title-sec, .card .waze-btn, .parents-grid {
+            text-shadow: 0 1px 10px rgba(0,0,0,0.75), 0 2px 4px rgba(0,0,0,0.5);
         }
+
+        /* Font-weight renforcé sur les textes courants */
+        .card p, .card .hebrew-note, .date-row { font-weight: 400; }
+        .title-sec { font-weight: 400; }
+        .names { font-weight: 400; }
 
         /* Ombre renforcée pour la Mairie (fond photo lumineux) */
         .mairie-section .title-sec,
