@@ -78,7 +78,16 @@
         .cover-bg {
             position: absolute;
             inset: 0;
+            background: url('cover3.jpg') center center / cover no-repeat;
+            filter: blur(18px) brightness(0.55) saturate(1.2);
+            transform: scale(1.1);
+        }
+        .cover-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
             background: url('cover3.jpg') center center / contain no-repeat;
+            filter: none;
         }
 
         #cover-overlay::after {
